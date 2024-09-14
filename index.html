@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <form name="calc">
+                <input type="text" name="display" id="display" disabled>
+                <input type="button" value="AC" onclick="clearDisplay()">
+                <input type="button" value="DE" onclick="deleteLast()">
+                <input type="button" value="." onclick="appendValue('.')">
+                <input type="button" class="operator" value="/" onclick="appendValue('/')">
+                <input type="button" value="7" onclick="appendValue('7')">
+                <input type="button" value="8" onclick="appendValue('8')">
+                <input type="button" value="9" onclick="appendValue('9')">
+                <input type="button" class="operator" value="*" onclick="appendValue('*')">
+                <input type="button" value="4" onclick="appendValue('4')">
+                <input type="button" value="5" onclick="appendValue('5')">
+                <input type="button" value="6" onclick="appendValue('6')">
+                <input type="button" class="operator" value="-" onclick="appendValue('-')">
+                <input type="button" value="1" onclick="appendValue('1')">
+                <input type="button" value="2" onclick="appendValue('2')">
+                <input type="button" value="3" onclick="appendValue('3')">
+                <input type="button" class="operator" value="+" onclick="appendValue('+')">
+                <input type="button" value="00" onclick="appendValue('00')">
+                <input type="button" value="0" onclick="appendValue('0')">
+                <input type="button" class="equals" value="=" onclick="calculate()">
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function appendValue(val) {
+            document.calc.display.value += val;
+        }
+
+        function clearDisplay() {
+            document.calc.display.value = "";
+        }
+
+        function deleteLast() {
+            document.calc.display.value = document.calc.display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                document.calc.display.value = eval(document.calc.display.value);
+            } catch {
+                document.calc.display.value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
